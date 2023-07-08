@@ -21,23 +21,24 @@ public class Test {
 //        System.out.println(pesosChilenos + " pesos chilenos equivale a " + resultadoPesosArgentinos + " pesos argentinos");
 //        
 //        Interfaz_principal app = new Interfaz_principal();
-    	Scanner scanner = new Scanner(System.in);
-    	String usuario = scanner.nextLine();
-  
-    	System.out.println("usuaio es: " + usuario);
+//    	Scanner scanner = new Scanner(System.in);
+//    	String usuario = scanner.nextLine();
+//  
+//    	System.out.println("usuaio es: " + usuario);
     	
     	List<Divisa> lista = new ArrayList();
     	
     	Divisa dolar = new Divisa("Dolár", "USD", 1.00);
-    	Divisa pesoChileno = new Divisa("Peso Chileno", "CLP", 800.00);
+    	Divisa pesoChileno = new Divisa("Peso Chileno", "CLP", 806.89);
+    	Divisa pesoArgentino = new Divisa("peso Argentino", "PES", 260.77);
     	
     	lista.add(dolar);
     	lista.add(pesoChileno);
-    	dolar.setNombre("hola");
-    	dolar.setValor(23.0);
+//    	dolar.setNombre("hola");
+//    	dolar.setValor(23.0);
     	
-    	for (DivisaBase divisa : lista) {
-			System.out.println(divisa.getNombre());
+    	for (Divisa divisa : lista) {
+			System.out.println(divisa.getValor());
 		}
     	
     	
@@ -52,8 +53,15 @@ public class Test {
 //    	System.out.println("value 3: " + value3);
 //    	System.out.println("value 4: " + value4);
         
-    	Double d = 20.3;
-    	BigDecimal bd = new BigDecimal(d.toString());
-    	System.out.println(bd);
+//    	Double d = 20.3;
+//    	BigDecimal bd = new BigDecimal(d.toString());
+//    	System.out.println(bd);
+//    	System.out.println(pesoChileno.getValor().compareTo(dolar.getValor()));
+    	
+//    	System.out.println(ConvertirDivisas.convertir(300.20, dolar, pesoChileno));
+//    	105401.55
+//    	105,205.075
+    	
+    	System.out.println(ConvertirDivisas.convertir(44572.2, pesoArgentino, pesoChileno));
     }
 }

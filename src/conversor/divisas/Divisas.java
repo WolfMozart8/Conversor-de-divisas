@@ -19,7 +19,8 @@ public class Divisas {
     public static double convertirDolaresAPesosArgentinos(double dolares) {
         return dolares * TIPO_CAMBIO_PESO_ARGENTINO;
     }
-    
+//    806.89
+//    142.11
     public static double convertirPesosChilenosAPesosArgentinos(double pesosChilenos) {
         return pesosChilenos * (TIPO_CAMBIO_PESO_ARGENTINO / TIPO_CAMBIO_PESO_CHILENO);
     }
