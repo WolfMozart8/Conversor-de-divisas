@@ -1,18 +1,25 @@
 package conversor.divisas;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 
 public class Convertidor {
 
 	
 	private String nombre;		// dolar
 	private String codigo;		// USD
-	private BigDecimal valor;	// 1.00
+	private Number valor;	// 1.00
 	
-	public Convertidor(String currency, String code, Double value) {
-		this.nombre = currency;
-		this.codigo = code;
-		this.valor = new BigDecimal(value.toString());
+	
+	public Convertidor(String nombre, String codigo) {
+		this.nombre = nombre;
+		this.codigo = codigo;
+	}
+	
+	public Convertidor(String nombre, String codigo, Double valor) {
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.valor = valor;
+//		this.valor = new BigDecimal(value.toString());
 	}
 
 	public String getNombre() {
@@ -31,14 +38,17 @@ public class Convertidor {
 		this.codigo = codigo;
 	}
 
-	public BigDecimal getValor() {
-		return valor;
+	public Number getValor() {
+		return (Double)valor;
+	}
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
-	public void setValor(Double valor) {
-		this.valor = new BigDecimal(valor.toString());
-//		this.valor = valor;
-	}
+//	public void setValor(Double valor) {
+//		this.valor = new BigDecimal(valor.toString());
+////		this.valor = valor;
+//	}
 	
 	
 }
