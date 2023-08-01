@@ -107,6 +107,22 @@ public class JsonDataBase {
             System.out.println(lista.size());
             return nombres;
         }
+        
+        public static Divisa[] getLista() {
+        	if (lista.isEmpty()) {
+        		crearDataBase();
+        	}
+        	
+        	Divisa[] divisas = new Divisa[lista.size()];
+        	
+        	for (int i = 0; i < lista.size(); i++) {
+        		Divisa divisa = lista.get(i);
+        		divisas[i] = divisa;
+        	}
+        	return divisas;
+        }
+        
+        
 
 }
 

@@ -114,7 +114,7 @@ public class Test {
 //    	System.out.println(ConvertirDivisas.convertir(300.20, dolar, pesoChileno));
 //    	105401.55
 //    	105,205.075
-    	System.out.println(ConvertirDivisas.convertir(usuario, pesoChileno, yen));
+//    	System.out.println(ConvertirDivisas.convertir(usuario, pesoChileno, yen));
     }
 }
 

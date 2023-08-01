@@ -6,7 +6,7 @@ public class Test1 {
 		// TODO Auto-generated method stub
 
     	Monedas dolar = new Monedas("Dolar", "USD", 1.00);
-    	Monedas peso = new Monedas("Peso Chileno", "CLP", 806.89);
+    	Monedas peso = new Monedas("Peso Chileno", "CLP", 818.39);
 
 		
 		Monedas m = new Monedas("Dolar", "USD", 110.0);
