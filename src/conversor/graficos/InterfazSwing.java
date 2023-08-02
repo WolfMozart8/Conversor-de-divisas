@@ -104,15 +104,15 @@ public class InterfazSwing extends JFrame {
         panelArriba.add(comboBox2);
 
         // Panel para la parte inferior
-        JPanel panelAbajo = new JPanel();
-        panelAbajo.add(label1);
-        panelAbajo.add(textField1);
-        panelAbajo.add(textField2);
-        panelAbajo.add(label2);
+        JPanel panelCentro = new JPanel();
+        panelCentro.add(label1);
+        panelCentro.add(textField1);
+        panelCentro.add(textField2);
+        panelCentro.add(label2);
 
         // Agregar paneles a la ventana principal
         add(panelArriba, BorderLayout.NORTH);
-        add(panelAbajo, BorderLayout.CENTER);
+        add(panelCentro, BorderLayout.CENTER);
     }
     
 	private static boolean isNumeroValido(String textInput, JTextField textOutput) {
