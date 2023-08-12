@@ -317,8 +317,8 @@ public class InterfazSwing extends JFrame {
 			listaDivisas2.addItem(nombres2[i]);
 		}
 		
-		listaDivisas1.setSelectedIndex(1);
-		listaDivisas2.setSelectedIndex(2);
+		listaDivisas1.setSelectedIndex(0);
+		listaDivisas2.setSelectedIndex(1);
 	}
 
 }
