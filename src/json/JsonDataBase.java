@@ -1,11 +1,9 @@
-package json.exportar;
+package json;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,23 +17,20 @@ public class JsonDataBase {
 
 	public static List<Divisa> lista = new ArrayList<>();
 
+	/**
+	 * Crea una nueva base de datos json si no hay uno o si la lista está vacia
+	 */
 	private static void crearDataBase() {
-//		2023-08-01 {2023, 07, 28}
-		int[] fecha = { 2023, 07, 28 };
-//		Divisa dolar = new Divisa("Dolar", "USD", 1.00);
-//		Divisa euro = new Divisa("Euro", "EUR", 0.91);
-//		Divisa libras = new Divisa("Libras", "PND", 0.78);
-//		Divisa yen = new Divisa("Yen japones", "YEN", 142.12);
-//		Divisa won = new Divisa("Won sud-coreano", "WON", 1298.66);
-//		Divisa pesoChileno = new Divisa("Peso Chileno", "CLP", 806.89);
-//		Divisa pesoArgentino = new Divisa("peso Argentino", "ARS", 260.77);
+//		2023-08-11 {2023, 08, 11} (año - mes - dia)
+		int[] fecha = { 2023, 8, 11 };
+
 		Divisa dolar = new Divisa("Dolar", "USD", 1.00, fecha);
 		Divisa euro = new Divisa("Euro", "EUR", 0.91, fecha);
-		Divisa libras = new Divisa("Libras", "PND", 0.78, fecha);
-		Divisa yen = new Divisa("Yen japones", "YEN", 142.12, fecha);
-		Divisa won = new Divisa("Won sud-coreano", "WON", 1298.66, fecha);
-		Divisa pesoChileno = new Divisa("Peso Chileno", "CLP", 806.89, fecha);
-		Divisa pesoArgentino = new Divisa("peso Argentino", "ARS", 260.77, fecha);
+		Divisa libras = new Divisa("Libras", "GBP", 0.79, fecha);
+		Divisa yen = new Divisa("Yen japonés", "JPY", 144.90, fecha);
+		Divisa won = new Divisa("Won sud-coreano", "KRW", 1330.60, fecha);
+		Divisa pesoChileno = new Divisa("Peso Chileno", "CLP", 853.21, fecha);
+		Divisa pesoArgentino = new Divisa("Peso Argentino", "ARS", 286.87, fecha);
 
 		lista.add(dolar);
 		lista.add(euro);
@@ -48,9 +43,12 @@ public class JsonDataBase {
 		guardarDataBase();
 	}
 
+	/**
+	 * Sobrescribe el archivo json actual
+	 */
 	public static void guardarDataBase() {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(lista);
+//		String json = gson.toJson(lista);
 //		System.out.println(json);
 
 		try (FileWriter fileWriter = new FileWriter("divisas.json")) {
@@ -58,7 +56,6 @@ public class JsonDataBase {
 			System.out.println("Objetos Divisa convertidos a JSON y guardados en el archivo 'divisas.json'.");
 
 		} catch (IOException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
@@ -99,43 +96,10 @@ public class JsonDataBase {
 			crearDataBase();
 		}
 	}
-//	public static void importarDataBase() {
-//		for (Divisa divisa : lista) {
-//			System.out.println("antes: " + divisa.getNombre());
-//		}
-//		if (lista.isEmpty()) {
-////			lista.isEmpty();
-////			lista.size();
-//			crearDataBase();
-//		}
-//		for (Divisa divisa : lista) {
-//			System.out.println("despues: " + divisa.getNombre());
-//		}
-//		
-//		String jsonContent = "";
-//		
-//		try (BufferedReader reader = new BufferedReader(new FileReader("divisas.json"))){
-//			String line;
-//			while ((line = reader.readLine()) != null) {
-//				jsonContent += line;
-//			}
-//			
-//		} catch (IOException e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}
-//		
-//		Gson gson = new Gson();
-//		Type listType = new TypeToken<List<Divisa>>() {}.getType();
-//		lista = gson.fromJson(jsonContent, listType);
-//		
-//	}
+
 
 	public static void agregarDivisa(String nombre, String codigo, Double valor) {
 		Divisa nuevaDivisa = new Divisa(nombre, codigo, valor);
-		String diaAgregado = LocalDate.now().toString();
-
-		nuevaDivisa.setFecha(diaAgregado);
 
 		lista.add(nuevaDivisa);
 	}
@@ -155,12 +119,22 @@ public class JsonDataBase {
 		return nombres;
 	}
 
+	
+	public static Divisa getDivisa(int index) {
+		return lista.get(index);
+	}
+	
+	/**
+	 * Retorna una lista de Divisas en forma de Array
+	 * @return Divisas[]
+	 */
 	public static Divisa[] getLista() {
 		if (lista.isEmpty()) {
 			crearDataBase();
 		}
 
 		Divisa[] divisas = new Divisa[lista.size()];
+		
 
 		for (int i = 0; i < lista.size(); i++) {
 			Divisa divisa = lista.get(i);
@@ -168,19 +142,7 @@ public class JsonDataBase {
 		}
 		return divisas;
 	}
+	
+	
 
-}
-
-class test {
-	public static void main(String[] args) {
-		JsonDataBase.importarDataBase();
-
-		JsonDataBase.agregarDivisa("HOLA", "JAJA", 990.9);
-		JsonDataBase.guardarDataBase();
-		JsonDataBase.importarDataBase();
-
-		String[] n = JsonDataBase.getNombres();
-//                System.out.println(n[7]);
-
-	}
 }

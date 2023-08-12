@@ -6,6 +6,15 @@ import java.math.RoundingMode;
 
 public class ConvertirDivisas {
 
+	/**
+	 * Convierte de una divisa a otra.
+	 * - Si ambas divisas son iguales retorna el mismo valor.
+	 * - Si uno de las dos divisas es dólar hará una operación diferente
+	 * @param valor Valor a convertir (será transformado a BigDecimal)
+	 * @param divisa1
+	 * @param divisa2
+	 * @return
+	 */
 	public static BigDecimal convertir(Double valor, Divisa divisa1, Divisa divisa2) {
 		BigDecimal valorBigDecimal = new BigDecimal(valor.toString());
 		
@@ -13,7 +22,7 @@ public class ConvertirDivisas {
 			return divisa1.getValor().multiply(valorBigDecimal);
 		}
 		
-		MathContext mc = new MathContext(8, RoundingMode.HALF_UP);
+		MathContext mc = new MathContext(16, RoundingMode.HALF_UP);
 		boolean esDolar = divisa1.getCodigo() == "USD" | divisa2.getCodigo() == "USD";
 
 
@@ -31,10 +40,4 @@ public class ConvertirDivisas {
 		}
 
 	}
-
-//	private static BigDecimal resultadoDolar(Double valor, Divisa divisa1, Divisa divisa2) {
-//		// TODO Auto-generated method stub
-//		BigDecimal resultado = divisa1.getValor().multiply(divisa2.getValor()).multiply(valorBigDecimal);
-//		return resultado.setScale(2, RoundingMode.HALF_UP);
-//	}
 }
